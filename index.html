@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How Miles Work</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #080A12;
+    --purple: #21143D;
+    --navy: #191C30;
+    --cyan: #81EAFF;
+    --gold: #F5D58A;
+    --lavender: #B49AFF;
+    --white: #F4F5FA;
+    --silver: #B9BFD2;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--black);
+    background-image: radial-gradient(ellipse at 50% 0%, rgba(33,20,61,0.6) 0%, transparent 55%),
+                      radial-gradient(ellipse at 80% 100%, rgba(25,28,48,0.5) 0%, transparent 50%);
+    color: var(--white);
+    line-height: 1.55;
+    padding: 24px 20px 40px;
+    max-width: 480px;
+    margin: 0 auto;
+    min-height: 100vh;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 32px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  h1 {
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, var(--white) 0%, var(--cyan) 45%, var(--lavender) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--silver);
+  }
+
+  .section {
+    background: linear-gradient(160deg, rgba(25,28,48,0.9) 0%, rgba(33,20,61,0.75) 100%);
+    border: 1px solid rgba(129,234,255,0.18);
+    border-radius: 22px;
+    padding: 24px 22px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.04);
+    backdrop-filter: blur(8px);
+    animation: fadeUp 0.7s ease both;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .section:nth-child(2) { animation-delay: 0.1s; }
+  .section:nth-child(3) { animation-delay: 0.2s; }
+  .section:nth-child(4) { animation-delay: 0.3s; }
+
+  .section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(129,234,255,0.4), transparent);
+  }
+
+  .section-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2.8px;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--cyan);
+    box-shadow: 0 0 8px var(--cyan);
+  }
+
+  .item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px dashed rgba(185,191,210,0.2);
+  }
+
+  .item:last-child { border-bottom: none; }
+
+  .item-label {
+    font-size: 18.5px;
+    font-weight: 500;
+    color: var(--white);
+    flex: 1;
+    padding-right: 12px;
+  }
+
+  .item-value {
+    font-size: 18.5px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+  }
+
+  .reward-item .item-value {
+    color: var(--cyan);
+  }
+
+  .highlight-banner {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 8px 0 20px;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .rule-box {
+    background: rgba(8,10,18,0.5);
+    border: 1px solid rgba(245,213,138,0.15);
+    border-radius: 16px;
+    padding: 18px;
+    margin-top: 8px;
+    font-size: 17.5px;
+    line-height: 1.65;
+    color: var(--silver);
+  }
+
+  .rule-box strong {
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  .footer {
+    text-align: center;
+    margin-top: 36px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--lavender);
+    animation: fadeUp 0.8s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (hover: hover) {
+    .section:hover {
+      border-color: rgba(129,234,255,0.35);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 20px rgba(129,234,255,0.08);
+      transition: all 0.35s ease;
+    }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>How Miles Work</h1>
+    <div class="subtitle">Exclusive Rewards Program</div>
+  </header>
+
+  <div class="highlight-banner">Easy Ways to Stack Miles</div>
+
+  <div class="section">
+    <div class="section-label">Earn Miles</div>
+    <div class="item">
+      <div class="item-label">Join the group</div>
+      <div class="item-value">50 Miles</div>
+    </div>
+    <div class="item">
+      <div class="item-label">Screenshot showing notifications are ON</div>
+      <div class="item-value">50 Miles</div>
+    </div>
+    <div class="item">
+      <div class="item-label">Screenshot of completed Packman game</div>
+      <div class="item-value">100 Miles</div>
+    </div>
+    <div class="item">
+      <div class="item-label">Per successful referral</div>
+      <div class="item-value">100 Miles</div>
+    </div>
+    <div class="item">
+      <div class="item-label">Screenshot following our Instagram</div>
+      <div class="item-value">100 Miles</div>
+    </div>
+    <div class="item">
+      <div class="item-label">Screenshot following our Facebook</div>
+      <div class="item-value">100 Miles</div>
+    </div>
+  </div>
+
+  <div class="highlight-banner">500 Easy Miles Available</div>
+
+  <div class="section">
+    <div class="section-label">Rewards</div>
+    <div class="item reward-item">
+      <div class="item-label">$1 Spent</div>
+      <div class="item-value">= 1 Mile</div>
+    </div>
+    <div class="item reward-item">
+      <div class="item-label">500 Miles</div>
+      <div class="item-value">$25 Off</div>
+    </div>
+    <div class="item reward-item">
+      <div class="item-label">800 Miles</div>
+      <div class="item-value">$50 Off</div>
+    </div>
+    <div class="item reward-item">
+      <div class="item-label">1,250 Miles</div>
+      <div class="item-value">Free Zip (Up to $120 Tier)</div>
+    </div>
+    <div class="item reward-item">
+      <div class="item-label">1,500 Miles</div>
+      <div class="item-value">Free Zip (Any Tier)</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Important Rule</div>
+    <div class="rule-box">
+      You have <strong>24 hours</strong> after every purchase or successful referral to DM <strong>“TRACK THIS”</strong> with proof to claim your miles.<br><br>
+      Don’t forget to submit your screenshots.
+    </div>
+  </div>
+
+  <div class="footer">
+    Stack Your Miles · Claim Your Rewards<br>
+    Don’t Miss Your Flight
+  </div>
+</body>
+</html>
